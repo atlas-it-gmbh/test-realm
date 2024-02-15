@@ -23,7 +23,12 @@ jobs:
         run: |
           echo -n $DEPLOY_KEY_BASE64  | base64 --decode > deploy_key
       
-
+      - name: prepare host
+        uses: atlas-it-gmbh/actions/prepare-host@dev
+        with:
+          host_ip: ${{ vars.HOST_IP }}
+          base_dir: ${{ env.BASE_DIR  }}
+          app_label: ${{ vars.APP_LABEL }}
 
       - name: delete keys
         if: always()
