@@ -1,0 +1,6 @@
+*.env
+local/**
+deploy_key
+admin_key
+secrets/**
+logs/**

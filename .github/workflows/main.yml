@@ -1,0 +1,10 @@
+name: "main"
+on:
+  push:
+    branches: [ "main", "dev" ]
+jobs:
+  deployment:
+    uses: ./.github/workflows/deploy.yml
+    with:
+      deploy_to: ${{ github.ref_name == 'main' && 'prod' || (github.ref_name == 'dev' && 'dev' || 'local') }}
+    secrets: inherit
